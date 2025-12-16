@@ -2,6 +2,7 @@ package com.example.drawerlayout
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +28,26 @@ class MainActivity : AppCompatActivity() {
 
         // change back icon when navigation drawer layout is opened or closed
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        naviView.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.home -> {
+                    Toast.makeText(this, "Home Click", Toast.LENGTH_SHORT).show()
+                    dlayout.closeDrawers()
+                }
+                R.id.setting ->{
+                    Toast.makeText(this, "Setting Click", Toast.LENGTH_SHORT).show()
+                    dlayout.closeDrawers()
+                }
+                R.id.share ->{
+                    Toast.makeText(this, "Share Click", Toast.LENGTH_SHORT).show()
+                    dlayout.closeDrawers()
+                }
+            }
+            true
+        }
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return if (toggle.onOptionsItemSelected(item)) {
